@@ -1,14 +1,20 @@
 package com.tomo.tvdependencyinjection.controllers;
 
+import com.tomo.tvdependencyinjection.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController
 {
-    public String sayWorld()
-    {
-        System.out.println("Hello Word!");
+    private final GreetingService greetingService;
 
-        return "Hy developers!";
+    public MyController(GreetingService greetingService)
+    {
+        this.greetingService = greetingService;
+    }
+
+    public String sayHello()
+    {
+        return greetingService.getGreeting();
     }
 }

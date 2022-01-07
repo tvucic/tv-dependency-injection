@@ -16,9 +16,8 @@ public class TvDependencyInjectionApplication {
 
 		MyController myController = (MyController) ctx.getBean("myController");
 
-		String greeting = myController.sayWorld();
-
-		System.out.println(greeting);
+		System.out.println("--------------PRIMARY Bean");
+		System.out.println(myController.sayHello());
 
 		System.out.println("--------------Property");
 
