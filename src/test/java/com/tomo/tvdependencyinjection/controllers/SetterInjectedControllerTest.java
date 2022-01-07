@@ -1,10 +1,8 @@
 package com.tomo.tvdependencyinjection.controllers;
 
-import com.tomo.tvdependencyinjection.services.GreetingServiceImpl;
+import com.tomo.tvdependencyinjection.services.ConstructorInjectedGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SetterInjectedControllerTest
 {
@@ -15,7 +13,7 @@ class SetterInjectedControllerTest
     {
         // We are kind of acting as the inversion control in the setUp() method
         controller = new SetterInjectedController();
-        controller.setGreetingService(new GreetingServiceImpl());
+        controller.setGreetingService(new ConstructorInjectedGreetingService());
     }
 
     @Test
