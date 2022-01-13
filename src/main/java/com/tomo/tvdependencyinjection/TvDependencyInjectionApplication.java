@@ -1,18 +1,20 @@
 package com.tomo.tvdependencyinjection;
 
-import com.tomo.tvdependencyinjection.controllers.ConstructorInjectedController;
-import com.tomo.tvdependencyinjection.controllers.MyController;
-import com.tomo.tvdependencyinjection.controllers.PropertyInjectedController;
-import com.tomo.tvdependencyinjection.controllers.SetterInjectedController;
+import com.tomo.tvdependencyinjection.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+@ComponentScan(basePackages = {"com.tomo.tvdependencyinjection", "net.tomo.tvdependencyinjection"})
 @SpringBootApplication
 public class TvDependencyInjectionApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(TvDependencyInjectionApplication.class, args);
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
 
 		MyController myController = (MyController) ctx.getBean("myController");
 
