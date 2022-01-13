@@ -2,7 +2,7 @@ package com.tomo.tvdependencyinjection.services;
 
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class ConstructorInjectedGreetingService implements GreetingService
 {
     @Override
