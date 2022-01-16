@@ -1,6 +1,7 @@
 package com.tomo.tvdependencyinjection;
 
 import com.tomo.tvdependencyinjection.controllers.*;
+import com.tomo.tvdependencyinjection.datasource.FakeDataSource;
 import com.tomo.tvdependencyinjection.services.PrototypeBean;
 import com.tomo.tvdependencyinjection.services.SingletonBean;
 import net.tomo.tvdependencyinjection.PetService;
@@ -54,6 +55,12 @@ public class TvDependencyInjectionApplication {
 		System.out.println(prototypeBean1.getMyScope());
 		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean2.getMyScope());
+
+
+		FakeDataSource fakeDataSource = ctx.getBean("fakeDataSource", FakeDataSource.class);
+		System.out.println(fakeDataSource.getUsername());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getJdbcurl());
 	}
 
 }

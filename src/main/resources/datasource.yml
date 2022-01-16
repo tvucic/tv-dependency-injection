@@ -1,0 +1,4 @@
+user:
+  username: "superuser"
+  password: "dbPassword"
+  jdbcurl: "someUrlforDB"
