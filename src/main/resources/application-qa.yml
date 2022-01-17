@@ -1,0 +1,4 @@
+app:
+  password: QaDBUser
+  jdbcurl: QaUrl
+  username: QavUsername

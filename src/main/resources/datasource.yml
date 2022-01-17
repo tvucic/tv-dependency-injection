@@ -1,4 +1,4 @@
-user:
-  username: "superuser"
-  password: "dbPassword"
-  jdbcurl: "someUrlforDB"
+app:
+  username: supersuperuser
+  password: DBPAssword
+  jdbcurl: urlForDB

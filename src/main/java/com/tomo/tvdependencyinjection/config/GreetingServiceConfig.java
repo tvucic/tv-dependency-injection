@@ -7,7 +7,6 @@ import com.tomo.tvdependencyinjection.services.*;
 import net.tomo.tvdependencyinjection.PetService;
 import net.tomo.tvdependencyinjection.PetServiceFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 

@@ -1,0 +1,4 @@
+app:
+  password: DevDBUser
+  jdbcurl: DevUrl
+  username: devUsername

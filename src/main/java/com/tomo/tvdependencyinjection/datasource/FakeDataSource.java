@@ -2,7 +2,7 @@ package com.tomo.tvdependencyinjection.datasource;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix="user")
+@ConfigurationProperties(prefix="app")
 public class FakeDataSource
 {
     private String username;
