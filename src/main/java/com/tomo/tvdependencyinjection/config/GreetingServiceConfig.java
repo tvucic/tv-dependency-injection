@@ -1,15 +1,16 @@
 package com.tomo.tvdependencyinjection.config;
 
 import com.tomo.tvdependencyinjection.datasource.FakeDataSource;
-import com.tomo.tvdependencyinjection.datasource.ProdConfiguration;
 import com.tomo.tvdependencyinjection.repositories.EnglishGreetingRepository;
 import com.tomo.tvdependencyinjection.repositories.EnglishGreetingRepositoryImpl;
 import com.tomo.tvdependencyinjection.services.*;
 import net.tomo.tvdependencyinjection.PetService;
 import net.tomo.tvdependencyinjection.PetServiceFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
+@EnableConfigurationProperties(ProdConstructorConfig.class)
 @Configuration
 public class GreetingServiceConfig
 {
@@ -31,6 +32,15 @@ public class GreetingServiceConfig
         fakeDataSource.setUsername(prodConfiguration.getUsername());
         fakeDataSource.setPassword(prodConfiguration.getPassword());
         fakeDataSource.setJdbcurl(prodConfiguration.getJdbcurl());
+        return fakeDataSource;
+    }
+
+    @Bean("fakeDataSourceConstBinding")
+    FakeDataSource fakeDataSourceConstBinding(ProdConstructorConfig prodConstructorConfig){
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(prodConstructorConfig.getUsername());
+        fakeDataSource.setPassword(prodConstructorConfig.getPassword());
+        fakeDataSource.setJdbcurl(prodConstructorConfig.getJdbcurl());
         return fakeDataSource;
     }
 

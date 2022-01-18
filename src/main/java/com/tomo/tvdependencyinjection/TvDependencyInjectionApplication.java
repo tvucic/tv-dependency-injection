@@ -1,8 +1,9 @@
 package com.tomo.tvdependencyinjection;
 
+import com.tomo.tvdependencyinjection.config.ProdConstructorConfig;
 import com.tomo.tvdependencyinjection.controllers.*;
 import com.tomo.tvdependencyinjection.datasource.FakeDataSource;
-import com.tomo.tvdependencyinjection.datasource.ProdConfiguration;
+import com.tomo.tvdependencyinjection.config.ProdConfiguration;
 import com.tomo.tvdependencyinjection.services.PrototypeBean;
 import com.tomo.tvdependencyinjection.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
@@ -75,6 +76,21 @@ public class TvDependencyInjectionApplication {
 		System.out.println(prodConfiguration.getUsername());
 		System.out.println(prodConfiguration.getPassword());
 		System.out.println(prodConfiguration.getJdbcurl());
+
+		System.out.println("-------------- Constructor Binding  ----------");
+
+		ProdConstructorConfig prodConstructorConfig =  ctx.getBean(ProdConstructorConfig.class);
+		System.out.println(prodConstructorConfig.getUsername());
+		System.out.println(prodConstructorConfig.getPassword());
+		System.out.println(prodConstructorConfig.getJdbcurl());
+
+		System.out.println("-------------- FakeDataSource arg constructor Binding  ----------");
+
+		FakeDataSource fakeDataSourceConstBinding =  ctx.getBean("fakeDataSourceConstBinding" ,FakeDataSource.class);
+
+		System.out.println(fakeDataSourceConstBinding.getUsername());
+		System.out.println(fakeDataSourceConstBinding.getPassword());
+		System.out.println(fakeDataSourceConstBinding.getJdbcurl());
 	}
 
 }
