@@ -55,7 +55,7 @@ public class TvDependencyInjectionApplication {
 		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean2.getMyScope());
 
-		System.out.println("-------------- Properties Binding ----------");
+		System.out.println("-------------- From Value annotation ----------");
 
 		FakeDataSource fakeDataSourceValue = ctx.getBean("fakeDataSourceValue", FakeDataSource.class);
 		System.out.println(fakeDataSourceValue.getUsername());
@@ -69,7 +69,7 @@ public class TvDependencyInjectionApplication {
 		System.out.println(fakeDataSourceProd.getPassword());
 		System.out.println(fakeDataSourceProd.getJdbcurl());
 
-		System.out.println("-------------- Config Props Bean,Prod  Binding ----------");
+		System.out.println("-------------- From Property class  ----------");
 
 		ProdConfiguration prodConfiguration =  ctx.getBean(ProdConfiguration.class);
 		System.out.println(prodConfiguration.getUsername());
