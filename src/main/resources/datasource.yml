@@ -1,4 +1,4 @@
-app:
+source:
   username: supersuperuser
   password: DBPAssword
   jdbcurl: urlForDB

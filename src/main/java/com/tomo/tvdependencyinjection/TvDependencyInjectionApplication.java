@@ -2,13 +2,12 @@ package com.tomo.tvdependencyinjection;
 
 import com.tomo.tvdependencyinjection.controllers.*;
 import com.tomo.tvdependencyinjection.datasource.FakeDataSource;
+import com.tomo.tvdependencyinjection.datasource.ProdConfiguration;
 import com.tomo.tvdependencyinjection.services.PrototypeBean;
 import com.tomo.tvdependencyinjection.services.SingletonBean;
-import net.tomo.tvdependencyinjection.PetService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 
 //@ComponentScan(basePackages = {"com.tomo.tvdependencyinjection", "net.tomo.tvdependencyinjection."})
 @SpringBootApplication
@@ -56,11 +55,26 @@ public class TvDependencyInjectionApplication {
 		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean2.getMyScope());
 
+		System.out.println("-------------- Properties Binding ----------");
 
-		FakeDataSource fakeDataSource = ctx.getBean("fakeDataSource", FakeDataSource.class);
-		System.out.println(fakeDataSource.getUsername());
-		System.out.println(fakeDataSource.getPassword());
-		System.out.println(fakeDataSource.getJdbcurl());
+		FakeDataSource fakeDataSourceValue = ctx.getBean("fakeDataSourceValue", FakeDataSource.class);
+		System.out.println(fakeDataSourceValue.getUsername());
+		System.out.println(fakeDataSourceValue.getPassword());
+		System.out.println(fakeDataSourceValue.getJdbcurl());
+
+		System.out.println("-------------- Properties Binding Prod ----------");
+
+		FakeDataSource fakeDataSourceProd = ctx.getBean("fakeDataSourceProd", FakeDataSource.class);
+		System.out.println(fakeDataSourceProd.getUsername());
+		System.out.println(fakeDataSourceProd.getPassword());
+		System.out.println(fakeDataSourceProd.getJdbcurl());
+
+		System.out.println("-------------- Config Props Bean,Prod  Binding ----------");
+
+		ProdConfiguration prodConfiguration =  ctx.getBean(ProdConfiguration.class);
+		System.out.println(prodConfiguration.getUsername());
+		System.out.println(prodConfiguration.getPassword());
+		System.out.println(prodConfiguration.getJdbcurl());
 	}
 
 }

@@ -1,30 +1,39 @@
 package com.tomo.tvdependencyinjection.config;
 
 import com.tomo.tvdependencyinjection.datasource.FakeDataSource;
+import com.tomo.tvdependencyinjection.datasource.ProdConfiguration;
 import com.tomo.tvdependencyinjection.repositories.EnglishGreetingRepository;
 import com.tomo.tvdependencyinjection.repositories.EnglishGreetingRepositoryImpl;
 import com.tomo.tvdependencyinjection.services.*;
 import net.tomo.tvdependencyinjection.PetService;
 import net.tomo.tvdependencyinjection.PetServiceFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
-@PropertySource("classpath:datasource.yml")
-@EnableConfigurationProperties(FakeDataSource.class)
 @Configuration
 public class GreetingServiceConfig
 {
-    @Bean
-    FakeDataSource fakeDataSource(@Value("${username}") String username,
-                                  @Value("${password}") String password,
-                                  @Value("${jdbcurl}") String jdbcurl){
+    @Bean("fakeDataSourceValue")
+    FakeDataSource fakeDataSource(@Value("${app.username}") String username,
+                                  @Value("${app.password}") String password,
+                                  @Value("${app.jdbcurl}") String jdbcurl)
+    {
         FakeDataSource fakeDataSource = new FakeDataSource();
         fakeDataSource.setUsername(username);
         fakeDataSource.setPassword(password);
         fakeDataSource.setJdbcurl(jdbcurl);
         return fakeDataSource;
     }
+
+    @Bean("fakeDataSourceProd")
+    FakeDataSource fakeDataSourceProd(ProdConfiguration prodConfiguration){
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(prodConfiguration.getUsername());
+        fakeDataSource.setPassword(prodConfiguration.getPassword());
+        fakeDataSource.setJdbcurl(prodConfiguration.getJdbcurl());
+        return fakeDataSource;
+    }
+
     @Bean
     PetServiceFactory petServiceFactory()
     {

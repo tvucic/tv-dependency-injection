@@ -1,9 +1,11 @@
 package com.tomo.tvdependencyinjection.datasource;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
-@ConfigurationProperties(prefix="source")
-public class FakeDataSource
+@ConfigurationProperties("app")
+@Configuration
+public class ProdConfiguration
 {
     private String username;
     private String password;
